@@ -8,3 +8,10 @@ body:
     attributes:
       value: |
         Teste Issue
+
+  - type: textarea
+    id: teste
+    attributes:
+      label: teste
+    validations:
+      required: false
