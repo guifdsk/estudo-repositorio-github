@@ -1,7 +1,7 @@
 name: Teste
 description: 'Teste'
 title: '[Teste]'
-labels: [teste,bug,valores]
+labels: [teste, bug, valores]
 
 body:
   - type: markdown
