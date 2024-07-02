@@ -4,6 +4,7 @@ title: '[Teste]'
 labels: [teste,bug,valores]
 
 body:
-  -type: markdown
-  attributes:
-    value: "Teste Issue"
+  - type: markdown
+    attributes:
+      value: |
+        Teste Issue
