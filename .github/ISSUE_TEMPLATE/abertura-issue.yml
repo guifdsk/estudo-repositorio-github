@@ -83,25 +83,19 @@ body:
       label: Impacto
       description: Selecione os impactos principais que esse débito técnico causa no sistema.
       options:
-        - label: Performance
-          value: performance
-        - label: Manutenibilidade
-          value: manutenibilidade
-        - label: Segurança
-          value: seguranca
-        - label: Testabilidade
-          value: testabilidade
-        - label: Escalabilidade
-          value: escalabilidade
-        - label: Outros
-          value: outros
+        - Performance
+        - Manutenibilidade
+        - Segurança
+        - Testabilidade
+        - Escalabilidade
+        - Outros
 
   - type: input
     id: versão
     attributes:
       label: Versão Afetada
       description: Informe a versão do sistema que está sendo afetada por este débito técnico.
-      placeholder: 'Ex: v123'
+      placeholder: 'Ex: v1.2.3'
 
   - type: input
     id: ambiente
