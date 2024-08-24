@@ -72,21 +72,17 @@ body:
 
         **Considerações:**
         Existem riscos ou outros fatores que precisam ser considerados ao resolver esse débito técnico?
-  - type: checkboxes
-    id: impacto
-    attributes:
-      label: Impacto
-      description: Selecione os impactos principais que esse débito técnico causa no sistema.
-      options:
-        - Performance
-        - Manutenibilidade
-        - Segurança
-        - Testabilidade
-        - Escalabilidade
-        - Outros
   - type: textarea
-    id: notas_adicionais
+    id: logs
     attributes:
-      label: Notas Adicionais
-      description: Adicione qualquer informação adicional que possa ser relevante para entender ou resolver o débito técnico.
-      placeholder: 'Outras informações ou detalhes que possam ser úteis.'
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
