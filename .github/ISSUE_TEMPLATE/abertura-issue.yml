@@ -1,3 +1,8 @@
+name: Débito Técnico
+description: 'Teste'
+title: '[Teste]'
+labels: [teste, bug, valores]
+
 body:
   - type: markdown
     attributes:
