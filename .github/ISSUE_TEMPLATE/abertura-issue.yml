@@ -9,9 +9,44 @@ body:
       value: |
         Teste Issue
 
-  - type: textarea
-    id: teste
+  - type: dropdown
+    id: tipo_debito_tecnico
     attributes:
-      label: teste
+      label: Tipo de Débito Técnico
+      description: Selecione o tipo de débito técnico associado à issue.
+      options:
+        - value: codigo_duplicado
+          label: Código Duplicado
+        - value: falta_de_testes
+          label: Falta de Testes Automatizados
+        - value: arquitetura_pobre
+          label: Arquitetura Pobre
+        - value: dependencias_desatualizadas
+          label: Dependências Desatualizadas
+        - value: documentacao_incompleta
+          label: Documentação Incompleta
+        - value: performance_degradada
+          label: Performance Degradada
+        - value: complexidade_ciclica
+          label: Complexidade Ciclomática Alta
     validations:
-      required: false
+      required: true
+
+  - type: textarea
+    id: descricao_problema
+    attributes:
+      label: Descrição do problema
+      description: Por favor, descreva o problema detalhadamente, incluindo passos para reproduzir, comportamento esperado e comportamento observado.
+      value: |
+        **Passos para reproduzir o problema:**
+        1. 
+        2. 
+        3. 
+
+        **Comportamento esperado:**
+        
+        **Comportamento observado:**
+
+        **Outras informações relevantes:**
+    validations:
+      required: true
