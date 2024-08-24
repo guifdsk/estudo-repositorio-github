@@ -1,112 +1,64 @@
-name: Débito Técnico
-description: 'Relatório de Débito Técnico'
-title: '[Débito Técnico] Título Descritivo do Problema'
-labels: [débito técnico, melhoria, documentação, refatoração]
-
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+projects: ["octo-org/1", "octo-org/44"]
+assignees:
+  - octocat
 body:
   - type: markdown
     attributes:
       value: |
-        ## Relatório de Débito Técnico
-
-        Obrigado por relatar um débito técnico! Este modelo ajudará a coletar informações detalhadas sobre o problema. Por favor, preencha todas as seções relevantes para que possamos entender completamente o que precisa ser melhorado.
-
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
   - type: dropdown
-    id: tipo_debito_tecnico
+    id: version
     attributes:
-      label: Tipo de Débito Técnico
-      description: Selecione o tipo de débito técnico associado ao problema.
+      label: Version
+      description: What version of our software are you running?
       options:
-        - Código Duplicado
-        - Falta de Testes Automatizados
-        - Arquitetura Pobre
-        - Dependências Desatualizadas
-        - Documentação Incompleta
-        - Performance Degradada
-        - Complexidade Ciclomática Alta
-        - Outros
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
     validations:
       required: true
-
-  - type: textarea
-    id: descricao_problema
+  - type: dropdown
+    id: browsers
     attributes:
-      label: Descrição do Débito Técnico
-      description: Descreva detalhadamente o débito técnico, incluindo o contexto, a área afetada e as implicações.
-      placeholder: |
-        **Contexto:**
-        Qual é o contexto em que esse débito técnico foi identificado? Em que parte do sistema ele ocorre?
-
-        **Problema:**
-        Qual é o problema específico que você encontrou? Como ele afeta o sistema?
-
-        **Impacto:**
-        Quais são as consequências desse débito técnico? Ele afeta a performance, manutenibilidade ou outros aspectos do sistema?
-
-        **Área afetada:**
-        Quais partes do código, módulos ou componentes são afetados por esse débito técnico?
-    validations:
-      required: true
-
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
   - type: textarea
-    id: passos_para_reproduzir
+    id: logs
     attributes:
-      label: Passos para Reproduzir
-      description: Se aplicável, forneça passos para reproduzir o problema ou para observar o débito técnico em ação.
-      placeholder: |
-        **Passos para Reproduzir:**
-        1. 
-        2. 
-        3. 
-
-        **Comportamento Esperado:**
-        O que você esperava que acontecesse?
-
-        **Comportamento Observado:**
-        O que aconteceu em vez do comportamento esperado?
-
-  - type: textarea
-    id: solucoes_propostas
-    attributes:
-      label: Soluções Propostas ou Considerações
-      description: Se possível, sugira uma solução ou explique o que pode ser feito para resolver ou mitigar o débito técnico.
-      placeholder: |
-        **Sugestão de Solução:**
-        Qual seria uma solução ideal para esse problema? Você tem alguma ideia de como ele poderia ser resolvido?
-
-        **Considerações:**
-        Existem riscos ou outros fatores que precisam ser considerados ao resolver esse débito técnico?
-
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
   - type: checkboxes
-    id: impacto
+    id: terms
     attributes:
-      label: Impacto
-      description: Selecione os impactos principais que esse débito técnico causa no sistema.
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
       options:
-        - Performance
-        - Manutenibilidade
-        - Segurança
-        - Testabilidade
-        - Escalabilidade
-        - Outros
-
-  - type: input
-    id: versão
-    attributes:
-      label: Versão Afetada
-      description: Informe a versão do sistema que está sendo afetada por este débito técnico.
-      placeholder: 'Ex: v1.2.3'
-
-  - type: input
-    id: ambiente
-    attributes:
-      label: Ambiente
-      description: Informe o ambiente onde o débito técnico foi identificado (desenvolvimento, staging, produção).
-      placeholder: 'Ex: Produção, Staging, Desenvolvimento'
-
-  - type: textarea
-    id: notas_adicionais
-    attributes:
-      label: Notas Adicionais
-      description: Adicione qualquer informação adicional que possa ser relevante para entender ou resolver o débito técnico.
-      placeholder: 'Outras informações ou detalhes que possam ser úteis.'
+        - label: I agree to follow this project's Code of Conduct
+          required: true
