@@ -17,22 +17,14 @@ body:
       label: Tipo de Débito Técnico
       description: Selecione o tipo de débito técnico associado ao problema.
       options:
-        - value: codigo_duplicado
-          label: Código Duplicado
-        - value: falta_de_testes
-          label: Falta de Testes Automatizados
-        - value: arquitetura_pobre
-          label: Arquitetura Pobre
-        - value: dependencias_desatualizadas
-          label: Dependências Desatualizadas
-        - value: documentacao_incompleta
-          label: Documentação Incompleta
-        - value: performance_degradada
-          label: Performance Degradada
-        - value: complexidade_ciclica
-          label: Complexidade Ciclomática Alta
-        - value: outros
-          label: Outros
+        - Código Duplicado
+        - Falta de Testes Automatizados
+        - Arquitetura Pobre
+        - Dependências Desatualizadas
+        - Documentação Incompleta
+        - Performance Degradada
+        - Complexidade Ciclomática Alta
+        - Outros
     validations:
       required: true
 
@@ -91,21 +83,22 @@ body:
       label: Impacto
       description: Selecione os impactos principais que esse débito técnico causa no sistema.
       options:
-        - label: Performance
-          value: performance
-        - label: Manutenibilidade
-          value: manutenibilidade
-        - label: Segurança
-          value: seguranca
-        - label: Testabilidade
-          value: testabilidade
-        - label: Escalabilidade
-          value: escalabilidade
-        - label: Outros
-          value: outros
+        - Performance
+        - Manutenibilidade
+        - Segurança
+        - Testabilidade
+        - Escalabilidade
+        - Outros
 
   - type: input
-    id: amb
+    id: versão
+    attributes:
+      label: Versão Afetada
+      description: Informe a versão do sistema que está sendo afetada por este débito técnico.
+      placeholder: 'Ex: v1.2.3'
+
+  - type: input
+    id: ambiente
     attributes:
       label: Ambiente
       description: Informe o ambiente onde o débito técnico foi identificado (desenvolvimento, staging, produção).
