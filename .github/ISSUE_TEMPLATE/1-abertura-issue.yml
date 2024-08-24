@@ -1,15 +1,15 @@
-name: Bug Report
+name: Débito Técnico
 description: File a bug report.
-title: "[Bug]: "
+title: "[Débito Técnico]: "
 labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
+
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        ## Relatório de Débito Técnico
+
+        Obrigado por relatar um débito técnico! Este modelo ajudará a coletar informações detalhadas sobre o problema. Por favor, preencha todas as seções relevantes para que possamos entender completamente o que precisa ser melhorado.
   - type: input
     id: contact
     attributes:
