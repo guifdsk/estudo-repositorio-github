@@ -1,7 +1,7 @@
 name: Débito Técnico
 description: File a bug report.
 title: "[Débito Técnico]: "
-labels: ["bug", "triage"]
+labels: ["fdsk-teste-label", "fdsk-debito"]
 
 body:
   - type: markdown
@@ -27,46 +27,66 @@ body:
     validations:
       required: true
   - type: textarea
-    id: what-happened
+    id: descricao_problema
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: Descrição do Débito Técnico
+      description: Descreva detalhadamente o débito técnico, incluindo o contexto, a área afetada e as implicações.
+      placeholder: |
+        **Contexto:**
+        Qual é o contexto em que esse débito técnico foi identificado? Em que parte do sistema ele ocorre?
+
+        **Problema:**
+        Qual é o problema específico que você encontrou? Como ele afeta o sistema?
+
+        **Impacto:**
+        Quais são as consequências desse débito técnico? Ele afeta a performance, manutenibilidade ou outros aspectos do sistema?
+
+        **Área afetada:**
+        Quais partes do código, módulos ou componentes são afetados por esse débito técnico?
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
+    id: passos_para_reproduzir
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+      label: Passos para Reproduzir
+      description: Se aplicável, forneça passos para reproduzir o problema ou para observar o débito técnico em ação.
+      placeholder: |
+        **Passos para Reproduzir:**
+        1. 
+        2. 
+        3. 
+
+        **Comportamento Esperado:**
+        O que você esperava que acontecesse?
+
+        **Comportamento Observado:**
+        O que aconteceu em vez do comportamento esperado?
+  - type: textarea
+    id: solucoes_propostas
+    attributes:
+      label: Soluções Propostas ou Considerações
+      description: Se possível, sugira uma solução ou explique o que pode ser feito para resolver ou mitigar o débito técnico.
+      placeholder: |
+        **Sugestão de Solução:**
+        Qual seria uma solução ideal para esse problema? Você tem alguma ideia de como ele poderia ser resolvido?
+
+        **Considerações:**
+        Existem riscos ou outros fatores que precisam ser considerados ao resolver esse débito técnico?
   - type: checkboxes
-    id: terms
+    id: impacto
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
+      label: Impacto
+      description: Selecione os impactos principais que esse débito técnico causa no sistema.
       options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+        - Performance
+        - Manutenibilidade
+        - Segurança
+        - Testabilidade
+        - Escalabilidade
+        - Outros
+  - type: textarea
+    id: notas_adicionais
+    attributes:
+      label: Notas Adicionais
+      description: Adicione qualquer informação adicional que possa ser relevante para entender ou resolver o débito técnico.
+      placeholder: 'Outras informações ou detalhes que possam ser úteis.'
