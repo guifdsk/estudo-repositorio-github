@@ -10,14 +10,22 @@ body:
         ## Relatório de Débito Técnico
 
         Obrigado por relatar um débito técnico! Este modelo ajudará a coletar informações detalhadas sobre o problema. Por favor, preencha todas as seções relevantes para que possamos entender completamente o que precisa ser melhorado.
-  - type: input
-    id: contact
+  - type: dropdown
+    id: tipo_debito_tecnico
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Tipo de Débito Técnico
+      description: Selecione o tipo de débito técnico associado ao problema.
+      options:
+        - Código Duplicado
+        - Falta de Testes Automatizados
+        - Arquitetura Pobre
+        - Dependências Desatualizadas
+        - Documentação Incompleta
+        - Performance Degradada
+        - Complexidade Ciclomática Alta
+        - Outros
     validations:
-      required: false
+      required: true
   - type: textarea
     id: what-happened
     attributes:
