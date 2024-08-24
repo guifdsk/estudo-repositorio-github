@@ -1,7 +1,7 @@
 name: Débito Técnico
-description: 'Teste'
-title: '[Teste]'
-labels: [teste, bug, valores]
+description: 'Relatório de Débito Técnico'
+title: '[Débito Técnico] Título Descritivo do Problema'
+labels: [débito técnico, melhoria, documentação, refatoração]
 
 body:
   - type: markdown
@@ -105,14 +105,7 @@ body:
           value: outros
 
   - type: input
-    id: versão
-    attributes:
-      label: Versão Afetada
-      description: Informe a versão do sistema que está sendo afetada por este débito técnico.
-      placeholder: 'Ex: v1.2.3'
-
-  - type: input
-    id: ambiente
+    id: amb
     attributes:
       label: Ambiente
       description: Informe o ambiente onde o débito técnico foi identificado (desenvolvimento, staging, produção).
