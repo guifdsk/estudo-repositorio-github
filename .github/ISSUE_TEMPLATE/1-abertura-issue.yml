@@ -13,12 +13,6 @@ body:
 
         **Nota:** Certifique-se de incluir o máximo de detalhes possível. Quanto mais informações fornecidas, mais fácil será identificar e resolver o problema.
 
-  - type: markdown
-    attributes:
-      value: |
-        🔸🔸🔸🔸🔸
-        ### Descrição do Débito Técnico
-
   - type: dropdown
     id: tipo_debito_tecnico
     attributes:
@@ -35,11 +29,6 @@ body:
         - Outros
     validations:
       required: true
-
-  - type: markdown
-    attributes:
-      value: |
-        **---**
 
   - type: textarea
     id: descricao_problema
@@ -59,11 +48,6 @@ body:
         **Área afetada:**
         Identifique as partes do código ou módulos que são impactados. Existem dependências críticas ou funcionalidades correlacionadas?
 
-  - type: markdown
-    attributes:
-      value: |
-        **---**
-
   - type: textarea
     id: passos_para_reproduzir
     attributes:
@@ -81,11 +65,6 @@ body:
         **Comportamento Observado:**
         O que aconteceu em vez disso? Inclua logs ou mensagens de erro se relevante.
 
-  - type: markdown
-    attributes:
-      value: |
-        **---**
-
   - type: textarea
     id: solucoes_propostas
     attributes:
@@ -98,11 +77,6 @@ body:
         **Considerações:**
         Existem riscos, impactos em outras áreas do sistema ou fatores que devem ser levados em conta na implementação da solução?
 
-  - type: markdown
-    attributes:
-      value: |
-        **---**
-
   - type: textarea
     id: notas_adicionais
     attributes:
@@ -110,3 +84,13 @@ body:
       description: Adicione qualquer informação adicional que possa ser relevante para entender ou resolver o débito técnico. Exemplos incluem links para commits, pull requests, ou discussões prévias.
       value: |
         **Links úteis ou referências:** Inclua links para commits, pull requests, issues relacionadas, ou documentação que ajude a entender o problema em contexto.
+
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        Links? References? Anything that will give us more context about the issue you are encountering!
+  
+        Tip: You can attach images or log files by clicking this area to highlight it and then dragging files in.
+    validations:
+      required: false
