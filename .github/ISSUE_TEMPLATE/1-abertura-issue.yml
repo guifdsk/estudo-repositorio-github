@@ -13,6 +13,11 @@ body:
 
         **Nota:** Certifique-se de incluir o máximo de detalhes possível. Quanto mais informações fornecidas, mais fácil será identificar e resolver o problema.
 
+  - type: markdown
+    attributes:
+      value: |
+        **---**
+
   - type: dropdown
     id: tipo_debito_tecnico
     attributes:
@@ -29,6 +34,11 @@ body:
         - Outros
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        **---**
 
   - type: textarea
     id: descricao_problema
@@ -48,6 +58,11 @@ body:
         **Área afetada:**
         Identifique as partes do código ou módulos que são impactados. Existem dependências críticas ou funcionalidades correlacionadas?
 
+  - type: markdown
+    attributes:
+      value: |
+        **---**
+
   - type: textarea
     id: passos_para_reproduzir
     attributes:
@@ -65,6 +80,11 @@ body:
         **Comportamento Observado:**
         O que aconteceu em vez disso? Inclua logs ou mensagens de erro se relevante.
 
+  - type: markdown
+    attributes:
+      value: |
+        **---**
+
   - type: textarea
     id: solucoes_propostas
     attributes:
@@ -76,6 +96,11 @@ body:
 
         **Considerações:**
         Existem riscos, impactos em outras áreas do sistema ou fatores que devem ser levados em conta na implementação da solução?
+
+  - type: markdown
+    attributes:
+      value: |
+        **---**
 
   - type: textarea
     id: notas_adicionais
