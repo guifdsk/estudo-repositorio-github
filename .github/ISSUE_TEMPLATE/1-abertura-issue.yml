@@ -13,11 +13,6 @@ body:
 
         **Nota:** Certifique-se de incluir o máximo de detalhes possível. Quanto mais informações fornecidas, mais fácil será identificar e resolver o problema.
 
-  - type: markdown
-    attributes:
-      value: |
-        ### Tipo de Débito Técnico
-
   - type: dropdown
     id: tipo_debito_tecnico
     attributes:
@@ -34,11 +29,6 @@ body:
         - Outros
     validations:
       required: true
-
-  - type: markdown
-    attributes:
-      value: |
-        ### Descrição
 
   - type: textarea
     id: descricao_problema
