@@ -15,9 +15,9 @@ body:
 
   - type: markdown
     attributes:
-      label: ---
       value: |
-        **---**
+        🔸🔸🔸🔸🔸
+        ### Descrição do Débito Técnico
 
   - type: dropdown
     id: tipo_debito_tecnico
@@ -38,7 +38,6 @@ body:
 
   - type: markdown
     attributes:
-      label: ---
       value: |
         **---**
 
