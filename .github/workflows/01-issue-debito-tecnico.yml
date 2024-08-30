@@ -1,0 +1,69 @@
+name: Comment on new issue
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write  # Concede permissão de escrita para issues
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Convert issue body to markdown and post a comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issueNumber = context.issue.number;
+            const issueBody = context.payload.issue.body;
+
+            function extractField(body, label) {
+              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*?)(?=\\n\\S|$)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : 'Não fornecido';
+            }
+
+            function extractTextareaContent(body, label) {
+              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : 'Não fornecido';
+            }
+
+            const tipoDebitoTecnico = extractField(issueBody, 'Tipo de Débito Técnico');
+            const pontuacao = extractField(issueBody, 'Pontuação');
+            const linkRepositorio = extractField(issueBody, 'Link do Repositório');
+            const notasAdicionais = extractTextareaContent(issueBody, 'Notas Adicionais');
+
+            const formattedLink = linkRepositorio.startsWith('http://') || linkRepositorio.startsWith('https://') 
+              ? linkRepositorio 
+              : `https://${linkRepositorio}`;
+
+            const markdownContent = `
+            ## AS IS (Situação Atual)
+            **Descrição:**
+            Use este campo para descrever o estado atual do débito técnico identificado.
+            
+            ---
+            
+            ## TO BE (Situação Desejada)
+            **Descrição:**
+            Neste campo, descreva a solução proposta ou o estado desejado após a resolução do débito técnico.
+            
+            ---
+            
+            ## Dados Gerais
+            - **Tipo de Débito Técnico:** ${tipoDebitoTecnico}
+            - **Pontuação:** ${pontuacao}
+            - **Link do Repositório:** [${formattedLink}](${formattedLink})
+            
+            ---
+            ## Observações
+            ${notasAdicionais}
+            `;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: markdownContent
+            });
