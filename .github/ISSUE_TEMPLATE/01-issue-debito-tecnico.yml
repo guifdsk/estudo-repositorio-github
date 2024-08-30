@@ -1,0 +1,107 @@
+name: Débito Técnico
+description: Relate um débito técnico.
+title: "[Débito Técnico]: "
+labels: ["fdsk-teste-label", "fdsk-debito"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Relatório de Débito Técnico
+
+        Obrigado por relatar um débito técnico! Este modelo ajudará a coletar informações detalhadas sobre o problema. Preencher todas as seções relevantes nos permitirá entender completamente o que precisa ser melhorado e priorizar a resolução.
+
+        **Nota:** Certifique-se de incluir o máximo de detalhes possível. Quanto mais informações fornecidas, mais fácil será identificar e resolver o problema.
+
+  - type: dropdown
+    id: tipo_debito_tecnico
+    attributes:
+      label: Tipo de Débito Técnico
+      description: Selecione o tipo de débito técnico associado ao problema.
+      options:
+        - Código Duplicado
+        - Falta de Testes Automatizados
+        - Arquitetura Pobre
+        - Dependências Desatualizadas
+        - Documentação Incompleta
+        - Performance Degradada
+        - Complexidade Ciclomática Alta
+        - Outros
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pontuacao
+    attributes:
+      label: Pontuação
+      description: Selecione a pontuação para resolução do problema.
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+    validations:
+      required: true
+
+  - type: input
+    id: link_repositorio
+    attributes:
+      label: Link do Repositório
+      description: |
+        Por favor, forneça o link para o repositório em que deve ser realizado a correção do Débito Técnico. 
+        Certifique-se de que o URL esteja completo e acessível.
+      placeholder: |
+        Exemplo: https://www.exemplo.com
+    validations:
+      required: true
+
+  - type: textarea
+    id: descricao_problema
+    attributes:
+      label: Descrição do Débito Técnico
+      description: |
+        Descreva detalhadamente o débito técnico, incluindo o contexto, a área afetada e as implicações. Seja o mais
+        específico possível.
+        Exemplo:
+        
+        **Contexto:**
+        Qual foi o cenário em que este débito técnico foi identificado? Isso está relacionado a uma funcionalidade 
+        específica ou um componente do sistema?
+
+        **Problema:**
+        Descreva o problema específico. Como ele impacta o código ou a funcionalidade? Há algum erro recorrente ou 
+        comportamento inesperado associado?
+
+        **Impacto:**
+        Como esse débito técnico afeta a operação ou o desenvolvimento contínuo? O impacto é imediato ou a longo prazo?
+        Há degradação de performance, risco de falhas, ou impacto na manutenibilidade?
+
+        **Área afetada:**
+        Identifique as partes do código ou módulos que são impactados. Existem dependências críticas ou funcionalidades 
+        correlacionadas?
+      placeholder: |
+        Utilize o modelo, se necessário, para melhor detalhar a Descrição do Débito Técnico
+
+  - type: textarea
+    id: solucoes_propostas
+    attributes:
+      label: Soluções Propostas ou Considerações
+      description: |
+        Se possível, sugira uma solução ou explique o que poderia ser feito para mitigar ou resolver o débito técnico. 
+        Considere abordar a questão de forma detalhada e refletir sobre possíveis impactos ou riscos associados à 
+        solução proposta.
+      placeholder: |
+        Soluções Propostas ou Considerações
+
+  - type: textarea
+    id: notas_adicionais
+    attributes:
+      label: Notas Adicionais
+      description: Adicione qualquer informação adicional que possa ser relevante para entender ou resolver o débito
+        técnico. Exemplos incluem links para commits, pull requests, ou discussões prévias.
+      placeholder: |
+        Notas Adicionais
