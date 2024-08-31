@@ -10,7 +10,7 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Convert issue body to markdown and post a comment
+      - name: Convert issue body to HTML and post a comment
         uses: actions/github-script@v6
         with:
           script: |
@@ -38,57 +38,66 @@ jobs:
               ? linkRepositorio 
               : `https://${linkRepositorio}`;
 
-            const markdownContent = `
-            ## AS IS (Situação Atual)
-            **Descrição:**
-            Use este campo para descrever o estado atual do débito técnico identificado.
-            
-            ---
-            
-            ## TO BE (Situação Desejada)
-            **Descrição:**
-            Neste campo, descreva a solução proposta ou o estado desejado após a resolução do débito técnico.
-            
-            ---
-            
-            ## Definition of Ready (DoR)
-            - [ ] Requisitos funcionais e não funcionais claramente definidos e documentados.
-            - [ ] Critérios de aceitação definidos e validados com o Product Owner.
-            - [ ] Especificações de API ou design foram revisados e aprovados.
-            - [ ] Dependências externas identificadas e validadas.
-            - [ ] Estimativa de esforço foi validada pela equipe.
-            - [ ] Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.).
-            
-            ## Definition of Done (DoD)
-            ### Backend:
-            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
-            - [ ] Testes unitários e de integração foram escritos e estão passando.
-            - [ ] Logs e monitoramento configurados (e.g., Serilog, Prometheus).
-            - [ ] Documentação da API (como Swagger) atualizada.
-            - [ ] Código deployado em ambiente de staging e testado com sucesso.
-            - [ ] Nenhum bug crítico encontrado durante os testes.
-            
-            ### Frontend:
-            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
-            - [ ] Testes de compatibilidade em diferentes navegadores e dispositivos realizados.
-            - [ ] Testes unitários e de interface estão passando.
-            - [ ] Layout responsivo e acessibilidade revisados e aprovados.
-            
-            ---
-            
-            ## Dados Gerais
-            - **Tipo de Débito Técnico:** ${tipoDebitoTecnico}
-            - **Pontuação:** ${pontuacao}
-            - **Link do Repositório:** [${formattedLink}](${formattedLink})
-            
-            ---
-            ## Observações
-            ${notasAdicionais}
+            const htmlContent = `
+            <h2>AS IS (Situação Atual)</h2>
+            <p><strong>Descrição:</strong></p>
+            <p>Use este campo para descrever o estado atual do débito técnico identificado.</p>
+
+            <hr />
+
+            <h2>TO BE (Situação Desejada)</h2>
+            <p><strong>Descrição:</strong></p>
+            <p>Neste campo, descreva a solução proposta ou o estado desejado após a resolução do débito técnico.</p>
+
+            <hr />
+
+            <h2>Definition of Ready (DoR)</h2>
+            <ul>
+              <li>[ ] Requisitos funcionais e não funcionais claramente definidos e documentados.</li>
+              <li>[ ] Critérios de aceitação definidos e validados com o Product Owner.</li>
+              <li>[ ] Especificações de API ou design foram revisados e aprovados.</li>
+              <li>[ ] Dependências externas identificadas e validadas.</li>
+              <li>[ ] Estimativa de esforço foi validada pela equipe.</li>
+              <li>[ ] Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.).</li>
+            </ul>
+
+            <h2>Definition of Done (DoD)</h2>
+            <h3>Backend:</h3>
+            <ul>
+              <li>[ ] Código desenvolvido, revisado e integrado ao repositório principal.</li>
+              <li>[ ] Testes unitários e de integração foram escritos e estão passando.</li>
+              <li>[ ] Logs e monitoramento configurados (e.g., Serilog, Prometheus).</li>
+              <li>[ ] Documentação da API (como Swagger) atualizada.</li>
+              <li>[ ] Código deployado em ambiente de staging e testado com sucesso.</li>
+              <li>[ ] Nenhum bug crítico encontrado durante os testes.</li>
+            </ul>
+
+            <h3>Frontend:</h3>
+            <ul>
+              <li>[ ] Código desenvolvido, revisado e integrado ao repositório principal.</li>
+              <li>[ ] Testes de compatibilidade em diferentes navegadores e dispositivos realizados.</li>
+              <li>[ ] Testes unitários e de interface estão passando.</li>
+              <li>[ ] Layout responsivo e acessibilidade revisados e aprovados.</li>
+            </ul>
+
+            <hr />
+
+            <h2>Dados Gerais</h2>
+            <ul>
+              <li><strong>Tipo de Débito Técnico:</strong> ${tipoDebitoTecnico}</li>
+              <li><strong>Pontuação:</strong> ${pontuacao}</li>
+              <li><strong>Link do Repositório:</strong> <a href="${formattedLink}">${formattedLink}</a></li>
+            </ul>
+
+            <hr />
+
+            <h2>Observações</h2>
+            <p>${notasAdicionais}</p>
             `;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: markdownContent
+              body: htmlContent
             });
