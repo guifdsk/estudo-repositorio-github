@@ -51,6 +51,31 @@ jobs:
             
             ---
             
+            ## Definition of Ready (DoR)
+            - [ ] Requisitos funcionais e não funcionais claramente definidos e documentados.
+            - [ ] Critérios de aceitação definidos e validados com o Product Owner.
+            - [ ] Especificações de API ou design foram revisados e aprovados.
+            - [ ] Dependências externas identificadas e validadas.
+            - [ ] Estimativa de esforço foi validada pela equipe.
+            - [ ] Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.).
+            
+            ## Definition of Done (DoD)
+            ### Backend:
+            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
+            - [ ] Testes unitários e de integração foram escritos e estão passando.
+            - [ ] Logs e monitoramento configurados (e.g., Serilog, Prometheus).
+            - [ ] Documentação da API (como Swagger) atualizada.
+            - [ ] Código deployado em ambiente de staging e testado com sucesso.
+            - [ ] Nenhum bug crítico encontrado durante os testes.
+            
+            ### Frontend:
+            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
+            - [ ] Testes de compatibilidade em diferentes navegadores e dispositivos realizados.
+            - [ ] Testes unitários e de interface estão passando.
+            - [ ] Layout responsivo e acessibilidade revisados e aprovados.
+            
+            ---
+            
             ## Dados Gerais
             - **Tipo de Débito Técnico:** ${tipoDebitoTecnico}
             - **Pontuação:** ${pontuacao}
