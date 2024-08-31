@@ -52,82 +52,27 @@ jobs:
             ---
             
             ## Definition of Ready (DoR)
-            ### Backend:
-            1. Requisitos funcionais e não funcionais claramente definidos e documentados:
-              - [ ] Sim
-              - [ ] Não se aplica
-            2. Critérios de aceitação definidos e validados com o Product Owner:
-              - [ ] Sim
-              - [ ] Não se aplica
-            3. Especificações de API ou design foram revisados e aprovados:
-              - [ ] Sim
-              - [ ] Não se aplica
-            4. Dependências externas identificadas e validadas:
-              - [ ] Sim
-              - [ ] Não se aplica
-            5. Estimativa de esforço foi validada pela equipe:
-              - [ ] Sim
-              - [ ] Não se aplica
-            6. Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.):
-              - [ ] Sim
-              - [ ] Não se aplica
-            
-            ### Frontend:
-            1. Wireframes e protótipos revisados e aprovados pelo time de design:
-              - [ ] Sim
-              - [ ] Não se aplica
-            2. Especificações de interações e animações definidas:
-              - [ ] Sim
-              - [ ] Não se aplica
-            3. Acesso às bibliotecas de componentes foi garantido:
-              - [ ] Sim
-              - [ ] Não se aplica
-            4. Definições de responsividade e suporte a navegadores acordadas:
-              - [ ] Sim
-              - [ ] Não se aplica
-            5. Critérios de acessibilidade discutidos e validados:
-              - [ ] Sim
-              - [ ] Não se aplica
-            
-            ---
+            - [ ] Requisitos funcionais e não funcionais claramente definidos e documentados.
+            - [ ] Critérios de aceitação definidos e validados com o Product Owner.
+            - [ ] Especificações de API ou design foram revisados e aprovados.
+            - [ ] Dependências externas identificadas e validadas.
+            - [ ] Estimativa de esforço foi validada pela equipe.
+            - [ ] Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.).
             
             ## Definition of Done (DoD)
             ### Backend:
-            1. Código desenvolvido, revisado e integrado ao repositório principal:
-              - [ ] Sim
-              - [ ] Não se aplica
-            2. Testes unitários e de integração escritos e passando:
-              - [ ] Sim
-              - [ ] Não se aplica
-            3. Logs e monitoramento configurados:
-              - [ ] Sim
-              - [ ] Não se aplica
-            4. Documentação da API (como Swagger) atualizada:
-              - [ ] Sim
-              - [ ] Não se aplica
-            5. Código deployado em ambiente de staging e testado com sucesso:
-              - [ ] Sim
-              - [ ] Não se aplica
-            6. Nenhum bug crítico encontrado durante os testes:
-              - [ ] Sim
-              - [ ] Não se aplica
+            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
+            - [ ] Testes unitários e de integração foram escritos e estão passando.
+            - [ ] Logs e monitoramento configurados (e.g., Serilog, Prometheus).
+            - [ ] Documentação da API (como Swagger) atualizada.
+            - [ ] Código deployado em ambiente de staging e testado com sucesso.
+            - [ ] Nenhum bug crítico encontrado durante os testes.
             
             ### Frontend:
-            1. Código desenvolvido, revisado e integrado ao repositório principal:
-              - [ ] Sim
-              - [ ] Não se aplica
-            2. Testes de compatibilidade em diferentes navegadores e dispositivos realizados:
-              - [ ] Sim
-              - [ ] Não se aplica
-            3. Testes unitários e de interface estão passando:
-              - [ ] Sim
-              - [ ] Não se aplica
-            4. Layout responsivo e acessibilidade revisados e aprovados:
-              - [ ] Sim
-              - [ ] Não se aplica
-            5. Versão deployada em staging e validada por stakeholders:
-              - [ ] Sim
-              - [ ] Não se aplica
+            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
+            - [ ] Testes de compatibilidade em diferentes navegadores e dispositivos realizados.
+            - [ ] Testes unitários e de interface estão passando.
+            - [ ] Layout responsivo e acessibilidade revisados e aprovados.
             
             ---
             
