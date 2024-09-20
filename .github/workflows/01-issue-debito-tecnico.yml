@@ -30,7 +30,7 @@ jobs:
             }
   
             function extractTextareaContentEnd(body, startLabel, endLabel) {
-              const regex = new RegExp(`${startLabel}\\s*\\n([\\s\\S]*?)(?=\\n${endLabel}|$)`, 'i');
+              const regex = new RegExp(`${startLabel}\\s*([\\s\\S]*?)\\s*${endLabel}`, 'i');
               const match = body.match(regex);
               return match ? match[1].trim() : 'Não fornecido';
             }
