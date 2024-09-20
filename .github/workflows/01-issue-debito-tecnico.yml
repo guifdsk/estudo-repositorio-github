@@ -23,12 +23,6 @@ jobs:
               return match ? match[1].trim() : 'Não fornecido';
             }
 
-#            function extractTextareaContent(body, label) {
-#              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*)`, 'i');
-#              const match = body.match(regex);
-#              return match ? match[1].trim() : 'Não fornecido';
-#            }
-
             function extractTextareaContent(body, label) {
               const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*?)(?=\\n(?:\\S|$))`, 'i');
               const match = body.match(regex);
