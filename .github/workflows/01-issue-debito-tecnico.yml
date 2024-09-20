@@ -24,9 +24,9 @@ jobs:
             }
 
             function extractTextareaContent(body, label) {
-              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*?)(?=\\n\\S|\\n$)`, 'i');
+              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*?)(?=\\n\\S|$)`, 'i');
               const match = body.match(regex);
-              return match ? match[1].trim() : 'Não fornecido';
+              return match ? match[1].replace(/\n\s*\n/g, '\n\n').trim() : 'Não fornecido';
             }
 
             const tipoDebitoTecnico = extractField(issueBody, 'Tipo de Débito Técnico');
