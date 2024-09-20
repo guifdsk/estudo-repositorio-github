@@ -32,6 +32,8 @@ jobs:
             const tipoDebitoTecnico = extractField(issueBody, 'Tipo de Débito Técnico');
             const pontuacao = extractField(issueBody, 'Pontuação');
             const linkRepositorio = extractField(issueBody, 'Link do Repositório');
+            const descricaoDebito = extractTextareaContent(issueBody, 'Descrição do Débito Técnico');
+            const solucaoProposta = extractTextareaContent(issueBody, 'Soluções Propostas ou Considerações');
             const notasAdicionais = extractTextareaContent(issueBody, 'Notas Adicionais');
 
             const formattedLink = linkRepositorio.startsWith('http://') || linkRepositorio.startsWith('https://') 
@@ -80,6 +82,16 @@ jobs:
             - **Tipo de Débito Técnico:** ${tipoDebitoTecnico}
             - **Pontuação:** ${pontuacao}
             - **Link do Repositório:** [${formattedLink}](${formattedLink})
+            
+            ---
+            
+            ## Descrição do Débito Técnico
+            ${descricaoDebito}
+            
+            ---
+            
+            ## Soluções Propostas ou Considerações
+            ${solucaoProposta}
             
             ---
             ## Observações
