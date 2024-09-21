@@ -104,15 +104,15 @@ jobs:
             ${notasAdicionais}
             `;
             
-            core.setOutput("result", markdownContent);
+            return markdownContent;
 
-      - name: Comment on the issue
+      - name: Create Issue Comment
         uses: actions/github-script@v7
         with:
           script: |
             const issueNumber = context.issue.number;
-            const markdownContent = `${{steps.create_template_content.outputs.result}}`;
-            
+            const markdownContent = steps.create_template_content.outputs.result;
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
