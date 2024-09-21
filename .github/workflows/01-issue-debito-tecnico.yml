@@ -47,7 +47,7 @@ jobs:
               ? linkRepositorio 
               : `https://${linkRepositorio}`;
 
-            return markdownContent = `
+            return `
             ## AS IS (Situação Atual)
             **Descrição:**
             Use este campo para descrever o estado atual do débito técnico identificado.
