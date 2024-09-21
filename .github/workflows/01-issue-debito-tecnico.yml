@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Create Template Content
         id: create_template_content
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const issueNumber = context.issue.number;
@@ -112,6 +112,6 @@ jobs:
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: "${{steps.create_template_content.outputs.result}}"
+              issue_number: context.issue.number,
+              body: `${{steps.create_template_content.outputs.result}}`
             });
