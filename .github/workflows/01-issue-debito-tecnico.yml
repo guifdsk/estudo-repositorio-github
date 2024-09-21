@@ -10,103 +10,109 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Convert issue body to markdown and post a comment
-        uses: actions/github-script@v6
+      - name: Create Template Content
+        id: create_template_content
+        run: |
+          const issueNumber = context.issue.number;
+          const issueBody = context.payload.issue.body;
+
+          function extractField(body, label) {
+            const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*?)(?=\\n\\S|$)`, 'i');
+            const match = body.match(regex);
+            return match ? match[1].trim() : 'Não fornecido';
+          }
+
+          function extractTextareaContent(body, label) {
+            const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*)`, 'i');
+            const match = body.match(regex);
+            return match ? match[1].trim() : 'Não fornecido';
+          }
+
+          function extractTextareaContentEnd(body, startLabel, endLabel) {
+            const regex = new RegExp(`${startLabel}\\s*([\\s\\S]*?)\\s*${endLabel}`, 'i');
+            const match = body.match(regex);
+            return match ? match[1].trim() : 'Não fornecido';
+          }
+
+          const tipoDebitoTecnico = extractField(issueBody, 'Tipo de Débito Técnico');
+          const pontuacao = extractField(issueBody, 'Pontuação');
+          const linkRepositorio = extractField(issueBody, 'Link do Repositório');
+          const descricaoDebito = extractTextareaContentEnd(issueBody, 'Descrição do Débito Técnico','Soluções Propostas ou Considerações');
+          const solucaoProposta = extractTextareaContentEnd(issueBody, 'Soluções Propostas ou Considerações', 'Notas Adicionais');
+          const notasAdicionais = extractTextareaContent(issueBody, 'Notas Adicionais');
+
+          const formattedLink = linkRepositorio.startsWith('http://') || linkRepositorio.startsWith('https://') 
+            ? linkRepositorio 
+            : `https://${linkRepositorio}`;
+
+          const markdownContent = `
+          ## AS IS (Situação Atual)
+          **Descrição:**
+          Use este campo para descrever o estado atual do débito técnico identificado.
+          
+          ---
+          
+          ## TO BE (Situação Desejada)
+          **Descrição:**
+          Neste campo, descreva a solução proposta ou o estado desejado após a resolução do débito técnico.
+          
+          ---
+          
+          ## Definition of Ready (DoR)
+          - [ ] Requisitos funcionais e não funcionais claramente definidos e documentados.
+          - [ ] Critérios de aceitação definidos e validados com o Product Owner.
+          - [ ] Especificações de API ou design foram revisados e aprovados.
+          - [ ] Dependências externas identificadas e validadas.
+          - [ ] Estimativa de esforço foi validada pela equipe.
+          - [ ] Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.).
+          
+          ## Definition of Done (DoD)
+          ### Backend:
+          - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
+          - [ ] Testes unitários e de integração foram escritos e estão passando.
+          - [ ] Logs e monitoramento configurados (e.g., Serilog, Prometheus).
+          - [ ] Documentação da API (como Swagger) atualizada.
+          - [ ] Código deployado em ambiente de staging e testado com sucesso.
+          - [ ] Nenhum bug crítico encontrado durante os testes.
+          
+          ### Frontend:
+          - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
+          - [ ] Testes de compatibilidade em diferentes navegadores e dispositivos realizados.
+          - [ ] Testes unitários e de interface estão passando.
+          - [ ] Layout responsivo e acessibilidade revisados e aprovados.
+          
+          ---
+          
+          ## Dados Gerais
+          - **Tipo de Débito Técnico:** ${tipoDebitoTecnico}
+          - **Pontuação:** ${pontuacao}
+          - **Link do Repositório:** [${formattedLink}](${formattedLink})
+          
+          ---
+          
+          ## Descrição do Débito Técnico
+          ${descricaoDebito}
+          
+          ---
+          
+          ## Soluções Propostas ou Considerações
+          ${solucaoProposta}
+          
+          ---
+          ## Observações
+          ${notasAdicionais}
+          `;
+
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: issueNumber,
+            body: markdownContent
+          });
+
+      - name: Create Comment
+        id: create_comment
+        uses: peter-evans/create-or-update-comment@v2
         with:
-          script: |
-            const issueNumber = context.issue.number;
-            const issueBody = context.payload.issue.body;
-
-            function extractField(body, label) {
-              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*?)(?=\\n\\S|$)`, 'i');
-              const match = body.match(regex);
-              return match ? match[1].trim() : 'Não fornecido';
-            }
-
-            function extractTextareaContent(body, label) {
-              const regex = new RegExp(`${label}\\s*\\n([\\s\\S]*)`, 'i');
-              const match = body.match(regex);
-              return match ? match[1].trim() : 'Não fornecido';
-            }
-  
-            function extractTextareaContentEnd(body, startLabel, endLabel) {
-              const regex = new RegExp(`${startLabel}\\s*([\\s\\S]*?)\\s*${endLabel}`, 'i');
-              const match = body.match(regex);
-              return match ? match[1].trim() : 'Não fornecido';
-            }
-
-            const tipoDebitoTecnico = extractField(issueBody, 'Tipo de Débito Técnico');
-            const pontuacao = extractField(issueBody, 'Pontuação');
-            const linkRepositorio = extractField(issueBody, 'Link do Repositório');
-            const descricaoDebito = extractTextareaContentEnd(issueBody, 'Descrição do Débito Técnico','Soluções Propostas ou Considerações');
-            const solucaoProposta = extractTextareaContentEnd(issueBody, 'Soluções Propostas ou Considerações', 'Notas Adicionais');
-            const notasAdicionais = extractTextareaContent(issueBody, 'Notas Adicionais');
-
-            const formattedLink = linkRepositorio.startsWith('http://') || linkRepositorio.startsWith('https://') 
-              ? linkRepositorio 
-              : `https://${linkRepositorio}`;
-
-            const markdownContent = `
-            ## AS IS (Situação Atual)
-            **Descrição:**
-            Use este campo para descrever o estado atual do débito técnico identificado.
-            
-            ---
-            
-            ## TO BE (Situação Desejada)
-            **Descrição:**
-            Neste campo, descreva a solução proposta ou o estado desejado após a resolução do débito técnico.
-            
-            ---
-            
-            ## Definition of Ready (DoR)
-            - [ ] Requisitos funcionais e não funcionais claramente definidos e documentados.
-            - [ ] Critérios de aceitação definidos e validados com o Product Owner.
-            - [ ] Especificações de API ou design foram revisados e aprovados.
-            - [ ] Dependências externas identificadas e validadas.
-            - [ ] Estimativa de esforço foi validada pela equipe.
-            - [ ] Acesso aos recursos necessários foi providenciado (ambientes, bibliotecas, etc.).
-            
-            ## Definition of Done (DoD)
-            ### Backend:
-            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
-            - [ ] Testes unitários e de integração foram escritos e estão passando.
-            - [ ] Logs e monitoramento configurados (e.g., Serilog, Prometheus).
-            - [ ] Documentação da API (como Swagger) atualizada.
-            - [ ] Código deployado em ambiente de staging e testado com sucesso.
-            - [ ] Nenhum bug crítico encontrado durante os testes.
-            
-            ### Frontend:
-            - [ ] Código desenvolvido, revisado e integrado ao repositório principal.
-            - [ ] Testes de compatibilidade em diferentes navegadores e dispositivos realizados.
-            - [ ] Testes unitários e de interface estão passando.
-            - [ ] Layout responsivo e acessibilidade revisados e aprovados.
-            
-            ---
-            
-            ## Dados Gerais
-            - **Tipo de Débito Técnico:** ${tipoDebitoTecnico}
-            - **Pontuação:** ${pontuacao}
-            - **Link do Repositório:** [${formattedLink}](${formattedLink})
-            
-            ---
-            
-            ## Descrição do Débito Técnico
-            ${descricaoDebito}
-            
-            ---
-            
-            ## Soluções Propostas ou Considerações
-            ${solucaoProposta}
-            
-            ---
-            ## Observações
-            ${notasAdicionais}
-            `;
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: markdownContent
-            });
+          issue-number: ${{ github.event.issue.number }}
+          body: ${{ steps.create_template_content.outputs.markdownContent }}
