@@ -105,7 +105,10 @@ jobs:
             `;
 
       - name: Debug Markdown Content
-        run: echo "${{ steps.create_template_content.outputs.result }}"
+        run: |
+          echo <<EOF
+          ${{ steps.create_template_content.outputs.result }}
+          EOF
 
       - name: Create Issue Comment
         uses: actions/github-script@v7
