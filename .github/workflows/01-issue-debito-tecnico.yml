@@ -46,7 +46,7 @@ jobs:
               ? linkRepositorio 
               : `https://${linkRepositorio}`;
 
-            const markdownContent = `
+            return  `
             ## AS IS (Situação Atual)
             **Descrição:**
             Use este campo para descrever o estado atual do débito técnico identificado.
@@ -103,8 +103,9 @@ jobs:
             ## Observações
             ${notasAdicionais}
             `;
-            
-            core.setOutput('result', markdownContent);
+
+      - name: Debug Markdown Content
+        run: echo "${{ steps.create_template_content.outputs.result }}"
 
       - name: Create Issue Comment
         uses: actions/github-script@v7
